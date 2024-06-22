@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+ 
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Musician Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Instrument Type</th>
+        <th scope="col">Album Name</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+    {% for val in form %}
+  
+      <tr>
+        <th scope="row">{{ val.id }}</th>
+
+        <td><a style='text-decoration: none; color: black;' href='{% url "edited" val.id %}'>{{ val.musician.First_name }}</a></td>
+
+        <td>{{val.musician.Email}}</td>
+        <td>{{val.musician.Instrument_type}}</td>
+        <td>{{val.Album_name}}</td>
+        <td>{{val.Release_Date}}</td>
+        <td>
+          <a href="{% url "edits" val.id %}" class="btn btn-warning">Edit</a>
+          <a href="{% url "deleted" val.id %}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr> 
+
+    {% endfor %}
+     
+    </tbody>
+  </table> 
+ 
+{% endblock %}
